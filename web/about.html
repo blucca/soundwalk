@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f4f2e8"><title>About & credits — SoundWalk</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"></head><body>
+<header class="site-header"><a class="wordmark" href="./" style="text-decoration:none"><img src="assets/icon.svg" width="30" height="30" alt="">soundwalk.</a><a href="https://github.com/blucca/soundwalk">Open source ↗</a></header>
+<main class="about-page"><article>
+<p class="eyebrow">FIVE SECONDS OF LOCAL AI. ONE MINUTE OF HUMAN ATTENTION.</p>
+<h1>A small way<br>to <em>pay attention.</em></h1>
+<p>SoundWalk gives you an invitation to listen to the world around you. Pause somewhere comfortable, record five seconds, choose a sound, and spend a minute following it. The thought you bring back is yours.</p>
+<blockquote>What is the smallest sound inside the bigger one?</blockquote>
+<a class="button primary" href="./">Take a soundwalk ↗</a>
+<h2>An open model, on your device</h2>
+<p><a href="https://www.kaggle.com/models/google/yamnet/TfJs/tfjs">Google’s YAMNet</a> is an Apache-2.0 sound classifier with 521 AudioSet labels. SoundWalk averages its frame scores, groups the strongest relevant labels into broad listening categories, and gives you the final choice. The task text is a set of authored listening invitations.</p>
+<p>The model runs with TensorFlow.js on the CPU in a Web Worker. Microphone audio is captured in memory, resampled to mono 16 kHz, and released after analysis. Model matching scores and your personal observation have separate places in the experience.</p>
+<p>First preparation downloads about 18 MB of application, model, and sample assets. After the “Ready for an offline soundwalk” message appears, the same browser can reopen the experience offline. Keep the tab open during your minute; switching away pauses the timer. A screen wake lock is requested in browsers that support it.</p>
+<h2>What stays here</h2>
+<p>The application processes recordings entirely inside this browser. Audio remains in memory during capture and analysis. Your latest 50 sound cards are stored in this browser’s local storage; saving an image creates a file on your device. The application’s network requests load its own static assets. GitHub Pages supplies the hosting.</p>
+<p>The shoreline sample has its own label throughout the flow and on exported cards. It is a rehearsal with a licensed recording. Microphone cards identify the input as a device recording; the place and written observation come from the listener.</p>
+<h2 id="credits">Open-source & recording credits</h2>
+<ul>
+<li><strong>YAMNet model and labels:</strong> Google / TensorFlow authors, Apache License 2.0. <a href="https://github.com/tensorflow/models/tree/master/research/audioset/yamnet">Model source</a> · <a href="https://www.kaggle.com/models/google/yamnet/TfJs/tfjs">Model weights</a>.</li>
+<li><strong>TensorFlow.js 4.22.0:</strong> Google / TensorFlow authors, Apache License 2.0. <a href="https://github.com/tensorflow/tfjs">Source</a>.</li>
+<li><strong>Sea-wave recording:</strong> HerbertBoland, <a href="https://freesound.org/people/HerbertBoland/sounds/28135/">“Branding_kort.wav,” Freesound #28135</a>, via <a href="https://github.com/karoldvl/ESC-50">ESC-10 clip 1-28135-A-11.wav</a>. <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. The dataset’s five-second excerpt is resampled to 16 kHz for inference and looped for the sample rehearsal.</li>
+<li><strong>Interface typeface:</strong> DM Sans Project Authors, <a href="assets/fonts/OFL.txt">SIL Open Font License 1.1</a>. Self-hosted Latin WOFF2.</li>
+<li><strong>SoundWalk application, invitations, and artwork:</strong> Blucca, MIT License. Built with an AI coding agent for the <a href="https://dev.to/challenges/hacktoberfest-week1-2026-10-05">DEV Hacktoberfest Open-Source AI Challenge, Week 1: Touch Grass</a>, October 2026.</li>
+</ul>
+<p><a href="https://github.com/blucca/soundwalk/blob/main/LICENSES.md">Full licenses & provenance</a> · <a href="model/provenance.json">Machine-readable asset provenance</a> · <a href="https://github.com/blucca/soundwalk/issues">Share a specific observation or issue</a></p>
+</article></main><footer class="site-footer"><span>OPEN MODEL. OPEN AIR.</span><a href="./">Back to your ears ↗</a></footer></body></html>

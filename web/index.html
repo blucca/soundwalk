@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f4f2e8">
+  <meta name="description" content="Five seconds of local AI. One minute of human attention. Take a tiny soundwalk and bring back something you noticed.">
+  <meta property="og:title" content="SoundWalk — bring back a sound">
+  <meta property="og:description" content="A small invitation to listen to the world around you. Open-source AI, running on your device.">
+  <meta property="og:image" content="https://blucca.github.io/soundwalk/assets/poster.png">
+  <title>SoundWalk — bring back a sound</title>
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the experience</a>
+  <header class="site-header">
+    <button class="wordmark" id="home-button" aria-label="SoundWalk home"><img src="assets/icon.svg" width="30" height="30" alt="">soundwalk<span class="wordmark-dot">.</span></button>
+    <nav aria-label="Main"><button class="text-button" id="notes-button">My field notes <span id="note-count">0</span></button><a class="about-link" href="about.html">About</a></nav>
+  </header>
+
+  <main id="main">
+    <p id="message" class="message" role="status" hidden></p>
+
+    <section id="view-home" class="view home-view" aria-labelledby="home-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="tiny-sun" aria-hidden="true">✳</span> A LITTLE FIELD TRIP FOR YOUR EARS</p>
+        <h1 id="home-title" tabindex="-1">Go outside.<br>Bring back<br><em>a sound.</em></h1>
+        <p class="lead">Give the world a minute of your attention.<br>See what you hear.</p>
+        <button id="start-button" class="button primary">Start a soundwalk <span aria-hidden="true">↗</span></button>
+        <p class="download-note">Local sound model · about 18 MB on your first visit</p>
+        <button id="sample-button" class="text-button sample-link"><span aria-hidden="true">▷</span> Try a shoreline sample</button>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 470 490" class="sound-garden">
+          <defs><clipPath id="garden-clip"><rect x="15" y="0" width="440" height="480" rx="220"/></clipPath></defs>
+          <g clip-path="url(#garden-clip)">
+            <rect x="15" width="440" height="480" fill="#e0e5cc"/>
+            <circle cx="280" cy="126" r="48" fill="#d67d48"/>
+            <path d="M-60 370 Q150 125 495 320 V520 H-60" fill="#a5b787"/>
+            <path d="M-20 392 Q170 275 475 434 V530 H-20" fill="#536d4b"/>
+            <path d="M-40 447 Q187 363 510 488 V530 H-40" fill="#293f34"/>
+            <g fill="none" stroke="#f4f2e8" stroke-width="1.5" opacity=".85"><ellipse cx="225" cy="292" rx="39" ry="67"/><ellipse cx="225" cy="292" rx="66" ry="102"/><ellipse cx="225" cy="292" rx="95" ry="135"/><ellipse cx="225" cy="292" rx="125" ry="168"/></g>
+            <path d="M82 130 q14 -12 29 0 q13 -12 27 0 M329 212 q11 -10 22 0 q12 -10 22 0" fill="none" stroke="#293f34" stroke-width="3" stroke-linecap="round"/>
+            <path d="M130 476 Q105 425 98 370 M104 413 q-32 -13 -29 -38 q27 5 29 38 M117 446 q20 -38 44 -32 q-7 27 -44 32" fill="#d3ddbb" stroke="#d3ddbb" stroke-width="3"/>
+          </g>
+          <circle cx="390" cy="399" r="52" fill="#f4f2e8"/>
+          <text x="390" y="396" text-anchor="middle" fill="#293f34" font-family="Georgia,serif" font-size="30">60</text>
+          <text x="390" y="415" text-anchor="middle" fill="#536d4b" font-family="sans-serif" font-size="10" letter-spacing="2">SECONDS</text>
+        </svg>
+        <p class="art-caption">AN OPEN INVITATION, WHEREVER YOU ARE.</p>
+      </div>
+      <ol class="journey" aria-label="Your soundwalk in three steps">
+        <li><span>01</span><div><strong>Catch a sound</strong><p>Five seconds. AI listens on your device.</p></div></li>
+        <li><span>02</span><div><strong>Follow your ears</strong><p>Choose a sound. Give it one quiet minute.</p></div></li>
+        <li><span>03</span><div><strong>Keep a little wonder</strong><p>Write a thought. Take home a sound card.</p></div></li>
+      </ol>
+    </section>
+
+    <section id="view-prepare" class="view centered" hidden aria-labelledby="prepare-title">
+      <div class="small-mark" aria-hidden="true">✳</div>
+      <p class="eyebrow" id="prepare-eyebrow">PACKING LIGHT</p>
+      <h1 id="prepare-title" tabindex="-1">A little preparation.<br><em>A whole world outside.</em></h1>
+      <p class="body-copy" id="prepare-copy">Bringing the open-source sound model to your device. Your microphone opens when you choose Record.</p>
+      <progress id="model-progress" max="1" value="0" aria-label="Model download"></progress>
+      <p id="prepare-status" class="status-text" aria-live="polite">Preparing local listening…</p>
+      <p class="fine-print">The model stays available for your next walk. Audio is processed in this browser.</p>
+    </section>
+
+    <section id="view-record" class="view centered" hidden aria-labelledby="record-title">
+      <p class="eyebrow">01 / CATCH A SOUND</p>
+      <h1 id="record-title" tabindex="-1">Find a place<br><em>to pause.</em></h1>
+      <p class="body-copy">A doorstep, a park bench, a patch of shade.<br>Hold your phone still and let the sounds arrive.</p>
+      <div class="record-orbit" id="record-orbit" aria-hidden="true"><span id="record-number">5</span><small>SECONDS</small></div>
+      <p id="record-status" class="status-text" aria-live="polite">Ready when you are.</p>
+      <button class="button primary" id="record-button">Record five seconds <span aria-hidden="true">●</span></button>
+      <button class="text-button" id="cancel-record" hidden>Stop recording</button>
+      <p class="fine-print">Microphone → local YAMNet → a listening invitation.<br>The recording is released after analysis.</p>
+    </section>
+
+    <section id="view-choose" class="view centered wider" hidden aria-labelledby="choose-title">
+      <p class="eyebrow">01 / FOLLOW WHAT YOU HEARD</p>
+      <h1 id="choose-title" tabindex="-1">What caught<br><em>your ear?</em></h1>
+      <p class="body-copy" id="choose-copy">The model offers a starting point. You choose the sound to follow.</p>
+      <p id="choose-source" class="source-chip"></p>
+      <div id="sound-choices" class="sound-choices"></div>
+      <details id="model-details" class="model-details"><summary>Inside this five-second listen</summary><p>YAMNet matching scores for this clip. Suggestions combine related labels into broad sounds.</p><ul id="model-labels"></ul><p id="inference-details"></p></details>
+      <button class="text-button" id="record-again">Catch another sound</button>
+    </section>
+
+    <section id="view-task" class="view centered" hidden aria-labelledby="task-title">
+      <p class="eyebrow" id="task-eyebrow">02 / YOUR LISTENING INVITATION</p>
+      <div class="task-symbol" id="task-symbol" aria-hidden="true">≈</div>
+      <h1 id="task-title" tabindex="-1"></h1>
+      <p class="invitation" id="task-prompt"></p>
+      <p id="task-source" class="source-chip"></p>
+      <p id="sample-explanation" class="sample-explanation" hidden>Sample rehearsal: the licensed five-second sea-wave clip loops during this minute.</p>
+      <button class="button primary" id="minute-button">Start my minute <span aria-hidden="true">↗</span></button>
+      <p class="fine-print">Keep this tab open. The page will dim.<br>A soft chime brings you back.</p>
+      <button id="change-sound" class="text-button">Choose another sound</button>
+    </section>
+
+    <section id="view-listen" class="view listen-view" hidden aria-labelledby="listen-title">
+      <div class="listen-top"><span class="eyebrow" id="listen-source">YOUR MINUTE OUTSIDE</span><span class="eyebrow" id="listen-kind"></span></div>
+      <h1 id="listen-title" tabindex="-1">Let the world<br><em>come to you.</em></h1>
+      <p id="listen-prompt" class="listen-prompt"></p>
+      <div class="listen-clock"><svg viewBox="0 0 180 180" aria-hidden="true"><circle cx="90" cy="90" r="82" class="clock-track"/><circle cx="90" cy="90" r="82" id="clock-progress"/></svg><span id="time-left" aria-label="Seconds remaining">1:00</span></div>
+      <p class="listen-hint" id="listen-hint" aria-live="polite">Your microphone is off. Just listen.</p>
+      <div class="listen-actions"><button id="pause-button" class="text-button">Pause</button><button id="finish-button" class="text-button">Finish early</button></div>
+    </section>
+
+    <section id="view-note" class="view centered" hidden aria-labelledby="note-title">
+      <p class="eyebrow">03 / KEEP A LITTLE WONDER</p>
+      <h1 id="note-title" tabindex="-1">What did<br><em>you notice?</em></h1>
+      <p class="body-copy">A rhythm, a distance, something you almost missed.<br>One small observation is plenty.</p>
+      <form id="note-form" class="note-form">
+        <label for="observation">Your own words</label><textarea id="observation" required maxlength="280" rows="4" placeholder="I noticed…"></textarea>
+        <div class="input-meta"><span>Saved on this device</span><span id="character-count">0 / 280</span></div>
+        <label for="place">A place name <span class="optional">(optional)</span></label><input id="place" maxlength="60" autocomplete="off" placeholder="Under the old tree">
+        <button class="button primary" type="submit">Keep my sound card <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="fine-print" id="note-context"></p>
+    </section>
+
+    <section id="view-card" class="view centered" hidden aria-labelledby="card-title">
+      <p class="eyebrow" id="card-title" tabindex="-1">SOMETHING WORTH KEEPING</p>
+      <article class="sound-card" id="sound-card">
+        <div class="card-top"><span class="card-brand">soundwalk.</span><span id="card-date"></span></div>
+        <div class="card-motif" aria-hidden="true"><i></i><i></i><i></i><i></i><b id="card-symbol">≈</b></div>
+        <p id="card-category" class="eyebrow"></p><blockquote id="card-quote"></blockquote><p id="card-place" class="card-place"></p>
+        <div class="card-bottom"><p id="card-source"></p><p id="card-model"></p><p id="card-duration"></p></div>
+      </article>
+      <p id="save-status" class="status-text"></p>
+      <div class="button-row"><button class="button primary" id="download-card">Save image <span aria-hidden="true">↓</span></button><button class="button secondary" id="share-card">Share words <span aria-hidden="true">↗</span></button></div>
+      <button class="text-button" id="another-walk">Take another soundwalk</button>
+      <button class="text-button delete-button" id="delete-card">Delete this card</button>
+    </section>
+
+    <section id="view-notes" class="view notes-view" hidden aria-labelledby="notes-title">
+      <p class="eyebrow">A SMALL COLLECTION OF ATTENTION</p>
+      <h1 id="notes-title" tabindex="-1">Your field<br><em>notes.</em></h1>
+      <p class="body-copy">Little things you stopped to hear. Stored in this browser.</p>
+      <div id="notes-list" class="notes-list"></div>
+      <button class="button primary" id="notes-start">Take a soundwalk <span aria-hidden="true">↗</span></button>
+    </section>
+
+    <section id="view-error" class="view centered" hidden aria-labelledby="error-title">
+      <p class="eyebrow">A MOMENT TO REGROUP</p>
+      <h1 id="error-title" tabindex="-1">A small<br><em>detour.</em></h1>
+      <p class="body-copy" id="error-copy"></p>
+      <button class="button primary" id="retry-button">Try again <span aria-hidden="true">↗</span></button>
+      <button class="text-button" id="manual-button">Choose an invitation yourself</button>
+    </section>
+  </main>
+  <footer class="site-footer"><span id="offline-status">OPEN MODEL. OPEN AIR.</span><span>Built by <a href="https://github.com/blucca">Blucca</a> with an AI coding agent. <a href="https://github.com/blucca/soundwalk">Source ↗</a> · <a href="about.html#credits">Credits</a></span></footer>
+  <audio id="sample-audio" src="audio/sea-waves.wav" preload="none"></audio>
+  <noscript><p class="message">Enable JavaScript to run the local sound model and listening timer.</p></noscript>
+</body>
+</html>

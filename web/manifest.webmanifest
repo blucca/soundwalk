@@ -1,0 +1,12 @@
+{
+  "id": "./",
+  "name": "SoundWalk — bring back a sound",
+  "short_name": "SoundWalk",
+  "description": "A minute of attention for the sounds around you.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f2e8",
+  "theme_color": "#f4f2e8",
+  "icons": [{"src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}]
+}

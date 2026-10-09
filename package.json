@@ -1,0 +1,13 @@
+{
+  "name": "soundwalk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Five seconds of local AI. One minute of human attention.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "verify": "node scripts/verify-assets.mjs",
+    "check": "node --check web/app.mjs && node --check web/model-worker.js && node --check web/sw.js && node --test tests/*.test.mjs && node scripts/verify-assets.mjs"
+  }
+}
