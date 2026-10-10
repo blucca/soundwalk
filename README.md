@@ -2,7 +2,7 @@
 
 **Five seconds of local AI. One minute of human attention.**
 
-[Take a soundwalk](https://blucca.github.io/soundwalk/) · [Try a shoreline sample](https://blucca.github.io/soundwalk/) · [How it works & credits](https://blucca.github.io/soundwalk/about.html)
+[Take a soundwalk](https://blucca.github.io/soundwalk/) · [Watch the 77-second film](https://blucca.github.io/soundwalk/demo/) · [How it works & credits](https://blucca.github.io/soundwalk/about.html)
 
 ![SoundWalk — go outside, bring back a sound](web/assets/poster.svg)
 
@@ -61,6 +61,8 @@ npm run check
 This runs focused audio tests and verifies model hashes, licensing provenance, and the complete offline asset graph. [GitHub Actions](https://github.com/blucca/soundwalk/actions) runs these checks before publishing the static experience to Pages. The workflow is part of the product delivery: changing or dropping a weight shard stops publication.
 
 ## Development evidence
+
+[The narrated browser film](https://blucca.github.io/soundwalk/demo/) follows real local inference, an edited view of a complete sixty-second sample rehearsal, a clearly labeled scripted observation, and image export. English captions, [transcript](docs/demo-transcript.md), and original sample credits accompany the film. Also available on [YouTube](https://youtu.be/757q9l9g0uQ).
 
 The [browser check](docs/validation.md) covers a complete 60-second sample rehearsal, PNG export, persistence, and an offline microphone flow using a file-backed microphone simulation. The first shipped-app sample inference took **4.23 seconds** in Chromium 153 on Linux; the microphone-path inference took **4.52 seconds**. Phone-sized layouts were exercised at 390 px and 320 px.
 

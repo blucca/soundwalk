@@ -1,6 +1,6 @@
 {
   "name": "soundwalk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "Five seconds of local AI. One minute of human attention.",

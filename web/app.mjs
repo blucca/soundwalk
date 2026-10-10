@@ -16,6 +16,7 @@ let activeCapture;
 let timer;
 let wakeLock;
 let chimeContext;
+let sampleObjectUrl;
 let retry = () => prepare(state.mode);
 let messageTimeout;
 
@@ -184,6 +185,13 @@ async function analyzeSample(flow = flowVersion) {
   const response = await fetch('./audio/sea-waves.wav');
   if (!response.ok) throw new Error('The sample download failed. Try the shoreline again.');
   const bytes = await response.arrayBuffer();
+  if (flow !== flowVersion) return;
+  // A complete local Blob gives native playback the same bytes used for inference.
+  // It also keeps the rehearsal independent of HTTP byte-range handling offline.
+  if (sampleObjectUrl) URL.revokeObjectURL(sampleObjectUrl);
+  sampleObjectUrl = URL.createObjectURL(new Blob([bytes], { type: 'audio/wav' }));
+  $('sample-audio').src = sampleObjectUrl;
+  $('sample-audio').load();
   const OfflineContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
   const context = new OfflineContext(1, 1, 16_000);
   const buffer = await context.decodeAudioData(bytes);
@@ -374,6 +382,15 @@ function tick() {
   if (progress >= MINUTE_MS) finishMinute(true);
 }
 
+function playSample() {
+  const activeTimer = timer;
+  $('sample-audio').play().catch(() => {
+    if (!timer || timer !== activeTimer || timer.paused) return;
+    pauseMinute();
+    $('listen-hint').textContent = 'Shoreline audio failed. Tap Resume to try again.';
+  });
+}
+
 function startMinute() {
   initializeChime();
   timer = { startedAt: performance.now(), elapsedMs: 0, paused: false, interval: null };
@@ -386,7 +403,7 @@ function startMinute() {
   if (state.mode === 'sample') {
     $('sample-audio').loop = true;
     $('sample-audio').currentTime = 0;
-    $('sample-audio').play().catch(() => { $('listen-hint').textContent = 'Tap Pause, then Resume to start the shoreline audio.'; });
+    playSample();
   }
   setView('listen');
   acquireWakeLock();
@@ -412,7 +429,7 @@ function resumeMinute() {
   $('pause-button').textContent = 'Pause';
   $('listen-hint').textContent = state.mode === 'sample' ? 'The licensed shoreline clip is looping for this rehearsal.' : 'Your microphone is off. Just listen.';
   initializeChime();
-  if (state.mode === 'sample') $('sample-audio').play().catch(() => {});
+  if (state.mode === 'sample') playSample();
   acquireWakeLock();
 }
 

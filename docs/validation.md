@@ -41,3 +41,11 @@ For the microphone simulation, Chromium can use:
 ```
 
 A physical outdoor session adds its own evidence: device/browser, the actual sound heard, the selected invitation, and the listener's observation. Those records are kept separately from this automated development check.
+
+## Sample playback and film release — v0.1.1
+
+Recording the browser film exposed a native-media format error when playing the cached WAV URL. The same complete bytes played successfully as a local Blob. The sample flow now creates that Blob before decoding the audio for inference, so playback uses the same licensed recording and works from the offline cache.
+
+The updated recording completed a full sixty-second sample rehearsal with actual media playback (`paused: false`, `readyState: 4`, advancing playback time). Offline reload, local inference, and sample playback also passed. An injected playback rejection paused the timer and displayed the Resume action; restoring playback resumed the rehearsal. The microphone path continues to use its existing capture and inference flow.
+
+The [77-second film](https://blucca.github.io/soundwalk/demo/) shows the updated release running on a local static server, with a clearly labeled scripted observation. Video requests and byte ranges use browser-managed delivery; the offline pack keeps the application and local sound model.

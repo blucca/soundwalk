@@ -52,6 +52,12 @@ larger ESC-50 collection and its separate collection-level license.
 Dataset citation: Karol J. Piczak, *ESC: Dataset for Environmental Sound
 Classification*, ACM Multimedia 2015. <https://doi.org/10.1145/2733373.2806390>.
 
+The [narrated browser film](https://blucca.github.io/soundwalk/demo/) loops and
+mixes this same sea-wave audio during its listening sequence. The film, watch
+page, and transcript retain the recording credit and CC BY 3.0 link. Original
+application footage and artwork are by Blucca with Codex; the English voice is
+synthesized. The observation shown in the film is a labeled scripted example.
+
 ## Asset integrity
 
 [`web/model/provenance.json`](web/model/provenance.json) records source URLs,

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f2e8">
+  <meta name="description" content="Watch SoundWalk in 77 seconds: a local sound suggestion, one minute of attention, and a small observation worth keeping.">
+  <meta property="og:title" content="SoundWalk — five seconds of AI, one minute outside">
+  <meta property="og:description" content="A recorded browser walkthrough, from a shoreline sample to your own sound card.">
+  <meta property="og:image" content="https://blucca.github.io/soundwalk/demo/poster.jpg">
+  <meta property="og:type" content="video.other">
+  <title>Watch SoundWalk — bring back a sound</title>
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <style>
+    @font-face{font-family:"DM Sans";font-style:normal;font-weight:100 1000;font-display:swap;src:url("../assets/fonts/dm-sans-latin.woff2") format("woff2")}
+    :root{color-scheme:light;--paper:#f4f2e8;--ink:#293f34;--muted:#626b5c;--line:#d6d9c9;font-family:"DM Sans",system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink)}a{color:inherit;text-underline-offset:4px}header,main,footer{width:min(1180px,calc(100% - 48px));margin:auto}header{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:1px solid var(--line);gap:22px}header>a:last-child{font-size:13px}.brand{display:flex;align-items:center;gap:9px;font:bold 30px Georgia,serif;letter-spacing:-1px;text-decoration:none}.brand img{width:30px;height:30px}.eyebrow{font-size:11px;letter-spacing:1.7px;text-transform:uppercase;color:var(--muted)}.intro{padding:36px 0 28px}h1{font:400 clamp(38px,5.5vw,65px)/1.06 Georgia,serif;letter-spacing:-1.7px;margin:18px 0}h1 em{color:#627a47}.lead{max-width:680px;line-height:1.7;color:var(--muted);font-size:16px;margin:0}.film{border-radius:13px;overflow:hidden;background:var(--ink);box-shadow:0 15px 45px #293f3412}video{display:block;width:100%;aspect-ratio:16/9}.film-note{display:flex;justify-content:space-between;gap:15px;margin:15px 0 25px;font-size:12px;color:var(--muted);line-height:1.7}.actions{display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-block;padding:14px 24px;border:1px solid #9aa58c;border-radius:40px;text-decoration:none;font-size:14px}.primary{background:var(--ink);border-color:var(--ink);color:var(--paper)}.story{display:grid;grid-template-columns:1.2fr 1fr;gap:55px;padding:42px 0;line-height:1.75;font-size:15px}.story h2{font:400 30px Georgia,serif;margin:0 0 16px}.story p{margin:12px 0}.story ol{padding-left:23px}.story li{margin-bottom:8px}.source{color:var(--muted);font-size:13px;line-height:1.8}details{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:23px 0}summary{cursor:pointer;font-size:15px;font-weight:600}.transcript{max-width:800px;line-height:1.8;color:var(--muted);font-size:15px}.credits{padding:24px 0}footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;padding:25px 0 35px;color:var(--muted);font-size:12px;line-height:1.7}a:focus-visible,summary:focus-visible,video:focus-visible{outline:3px solid #b55c2f;outline-offset:5px}@media(max-width:650px){header,main,footer{width:calc(100% - 32px)}header{padding:23px 0}.brand{font-size:27px}.intro{padding-top:27px}.lead{font-size:15px}.film-note,footer{display:block}.film-note span{display:block;margin:4px 0}footer>span{display:block;margin:0 0 10px}.story{grid-template-columns:1fr;gap:25px;padding:32px 0}.actions .button{text-align:center;flex:1;padding:13px 17px}h1{letter-spacing:-1px}.source{overflow-wrap:anywhere}}
+  </style>
+</head>
+<body>
+  <header><a class="brand" href="../"><img src="../assets/icon.svg" alt="">soundwalk.</a><a href="https://github.com/blucca/soundwalk">Explore the source ↗</a></header>
+  <main>
+    <section class="intro"><p class="eyebrow">The working experience · 1 minute 17 seconds</p><h1>Give the world a minute.<br><em>Bring back a sound.</em></h1><p class="lead">A local sound suggestion. A listening direction you choose. One small detail, in your own words.</p></section>
+    <div class="film"><video controls playsinline preload="metadata" poster="poster.jpg" aria-label="SoundWalk narrated browser demonstration"><source src="soundwalk-demo.mp4" type="video/mp4"><track kind="captions" src="captions.vtt" srclang="en" label="English">Read the <a href="#transcript">English transcript</a>.</video></div>
+    <div class="film-note"><span>English narration &amp; captions · real browser interactions</span><span>Licensed shoreline sample · scripted observation · timer excerpts</span><a href="https://youtu.be/757q9l9g0uQ">Watch on YouTube ↗</a></div>
+    <nav class="actions" aria-label="Experience SoundWalk"><a class="button primary" href="../">Take a soundwalk ↗</a><a class="button" href="https://github.com/blucca/soundwalk">Read the code ↗</a></nav>
+    <section class="story">
+      <div><h2>A little field trip for your ears.</h2><ol><li>Prepare the local model, then capture five seconds of your surroundings.</li><li>Choose one sound to follow. Read its invitation and let the page dim for a minute.</li><li>Write what you noticed. Save your field note or take home an image.</li></ol><p>At your desk, <strong>Try a shoreline sample</strong> takes you through the same listening ritual using a credited sea-wave recording.</p></div>
+      <div><h2>Inside this film.</h2><p>Recorded from the working application in Chromium. YAMNet classifies the licensed sample locally; the complete sixty-second rehearsal runs before the scripted observation is entered. The edit shows excerpts of that minute.</p><p>The card keeps its sample label and the words <strong>“Scripted example”</strong>. <a href="example-card.png">Open the exported card →</a></p><p class="source">The application and model work offline after the readiness message appears. This film is streamed online. <a href="../about.html">How SoundWalk works →</a></p></div>
+    </section>
+    <details id="transcript"><summary>English transcript</summary><div class="transcript">
+      <p>A wave. A bird nearby. A gap in the traffic. SoundWalk gives you one small reason to stop and listen.</p>
+      <p>Outdoors, you record five seconds. Here, I’m using the credited shoreline sample. The open YAMNet model runs in this browser and suggests water.</p>
+      <p>You choose what to follow. This invitation asks you to pick out one small splash within the larger wash of sound.</p>
+      <p>Then the page dims for sixty seconds. Read once, look up, and listen. This film skips ahead through the minute.</p>
+      <p>When you return, write one thing you noticed. Here is a scripted example. The card keeps the model’s suggestion, your choice, and your words.</p>
+      <p>Save an image, or keep your field notes on this device. After preparation, the model works offline. Try SoundWalk, and bring back a sound.</p>
+    </div></details>
+    <section class="credits source"><strong>Film credits.</strong> Original application, artwork, and browser recording by Blucca with Codex. The English voice is synthesized. Sea-wave audio: HerbertBoland’s <a href="https://freesound.org/people/HerbertBoland/sounds/28135/">“Branding_kort.wav”</a>, via <a href="https://github.com/karoldvl/ESC-50">ESC-10 clip 1-28135-A-11</a>, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>; looped and mixed during the listening sequence. Preparation, interactions, and the listening interval are edited for length. <a href="https://github.com/blucca/soundwalk/blob/main/LICENSES.md">Full asset credits</a> · <a href="soundwalk-demo.mp4" download>Download the film</a>.</section>
+  </main>
+  <footer><span>Open model. Open air.<br>SoundWalk · October 2026</span><span>Built by Blucca with an AI coding agent.<br><a href="https://github.com/blucca/soundwalk/issues">Share a specific observation →</a></span></footer>
+</body>
+</html>

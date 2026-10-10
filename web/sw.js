@@ -1,5 +1,5 @@
 /* SoundWalk keeps the application and open model on this device for offline use. */
-const CACHE = 'soundwalk-v0.1.0';
+const CACHE = 'soundwalk-v0.1.1';
 const SHELL = [
   './', './index.html', './styles.css', './app.mjs', './audio.mjs',
   './model-worker.js', './recorder-worklet.js', './manifest.webmanifest',
@@ -25,12 +25,14 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   if (event.request.method !== 'GET' || url.origin !== self.location.origin || !url.pathname.startsWith(new URL('./', self.location.href).pathname)) return;
+  // Browser-managed media delivery preserves byte-range playback and seeking.
+  if (event.request.destination === 'video' || event.request.headers.has('range')) return;
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
     const cached = await cache.match(event.request, { ignoreSearch: true });
     if (cached) return cached;
     const response = await fetch(event.request);
-    if (response.ok && response.type === 'basic') await cache.put(event.request, response.clone());
+    if (response.status === 200 && response.type === 'basic') await cache.put(event.request, response.clone());
     return response;
   })());
 });
