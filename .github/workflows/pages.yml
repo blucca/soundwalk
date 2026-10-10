@@ -1,4 +1,4 @@
-name: Verify local AI and publish SoundWalk
+name: Check local AI and publish SoundWalk
 on:
   push:
     branches: [main]
@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verify audio behavior, model bytes, attribution, and offline dependencies
+      - name: Check audio behavior, required model assets, attribution, and offline dependencies
         run: npm run check
   deploy:
     if: github.event_name != 'pull_request'

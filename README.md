@@ -58,7 +58,7 @@ Native ES modules and browser APIs supply the application runtime. The checked-i
 npm run check
 ```
 
-This runs focused audio tests and verifies model hashes, licensing provenance, and the complete offline asset graph. [GitHub Actions](https://github.com/blucca/soundwalk/actions) runs these checks before publishing the static experience to Pages. The workflow is part of the product delivery: changing or dropping a weight shard stops publication.
+This runs focused audio tests and checks licensing provenance, required model assets, and the complete offline dependency pack. [GitHub Actions](https://github.com/blucca/soundwalk/actions) runs these checks before publishing the static experience to Pages. Missing weight shards or offline dependencies stop publication.
 
 ## Development evidence
 
